@@ -1,96 +1,40 @@
-<div class="card border-info mb-3">
-  <div class="card-header">Agregar Productos</div>
-  <div class="card-body">
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputNombre">Nombre</label>
-          <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Producto">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPrecio">Precio</label>
-          <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputDescripcion">Descripción</label>
-        <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripción del producto">
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputImagen">Imagen</label>
-        			<input type="file" name="file">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
+<div class="card border-primary mb-3">
+  <div class="card-header">Productos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de productos</h5>
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/agregarProd/form']">Agregar Producto</button>
+  </div>
+  <div *ngIf="productos?.length == 0" class="alert alert-info">
+    No hay registros en la base de datos!
+  </div>
+    <table class="table table-bordered table-striped" *ngIf="productos?.length>0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.id }}</td>
+          <td></td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>
+            <button type="button" name="editar" [routerLink]= "['/agregarProd/form', producto.id]" class="btn btn-primary btn-sm">Editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" (click)= 'delete(producto)' class="btn btn-danger btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-
-<!--<div class="container">
-    <div>
-        <form>
-            <div class="form-group">
-                <div id="formdiv">
-                    <div class="row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-md-8 col-md-offset-1">
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Nombre del Servicio</strong></p>
-                        </div>
-                        <div class="col-md-10 col-md-offset-1"><input class="form-control" type="text" name="name" required="" placeholder="Nombre del Servicio" style="margin-left:0px;font-family:Roboto, sans-serif;"></div>
-                    </div>
-                    <div class="row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-md-8 col-md-offset-1">
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Costo</strong></p>
-                        </div>
-                        <div class="col-md-10 col-md-offset-1"><input class="form-control col-2 col-form-label form-control" type="number" placeholder="Costo del Servicio"></div>
-                    </div>
-
-
-
-
-                    <br>
-                    <div class="col-md-10 col-md-offset-1">
-                        <table class="table table-responsive table-striped">
-                            <thead>
-                                <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                    <td><button class="btn btn-danger">eliminar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Smith</td>
-                                    <td>Thomas</td>
-                                    <td>smith@example.com</td>
-                                    <td><button class="btn btn-danger">eliminar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Merry</td>
-                                    <td>Jim</td>
-                                    <td>merry@example.com</td>
-                                    <td><button class="btn btn-danger">eliminar</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <br>
-                    <div class="row" style="margin-right:0px;margin-left:-70px;padding-top:24px;">
-                        <div class="col-md-5 col-md-offset-5 col-xs-12 col-xs-offset-0">
-                            <button class="btn btn-default-clear btn-lg" type="reset" style="font-family:Roboto, sans-serif;">Limpiar </button>
-                            <button class="btn btn-default btn-lg" type="submit" style="margin-left:16px;">Enviar </button>
-                            <button class="btn btn-default-update btn-lg" type="submit" style="margin-left:16px;">Actualizar </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>-->
