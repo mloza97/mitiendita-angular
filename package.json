@@ -2,15 +2,13 @@
   "name": "mitiendita-app",
   "version": "0.0.0",
   "scripts": {
-      "ng": "ng",
-      "start": "node server.js",
-      "build": "ng build",
-      "test": "ng test",
-      "lint": "ng lint",
-      "e2e": "ng e2e",
-      "lite": "lite-server",
-      "postinstall": "ng build --prod"
-    },
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.1",
