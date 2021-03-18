@@ -8,7 +8,7 @@ import { Producto } from "./producto";
 })
 export class ProductoService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/productos';
+  private urlEndPoint: string = 'https://spring-boot-mitiendita.herokuapp.com/api/productos';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
