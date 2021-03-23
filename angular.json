@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Mitiendita-app": {
+    "mitiendita-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Mitiendita-app",
+            "outputPath": "dist/mitiendita-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Mitiendita-app:build"
+            "browserTarget": "mitiendita-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Mitiendita-app:build:production"
+              "browserTarget": "mitiendita-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Mitiendita-app:build"
+            "browserTarget": "mitiendita-app:build"
           }
         },
         "test": {
@@ -112,16 +112,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Mitiendita-app:serve"
+            "devServerTarget": "mitiendita-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Mitiendita-app:serve:production"
+              "devServerTarget": "mitiendita-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Mitiendita-app"
+  "defaultProject": "mitiendita-app"
 }
