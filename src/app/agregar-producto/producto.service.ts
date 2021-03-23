@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Producto } from "./producto";
 
@@ -8,7 +8,7 @@ import { Producto } from "./producto";
 })
 export class ProductoService {
 
-  private urlEndPoint: string = 'https://spring-boot-mitiendita.herokuapp.com/api/productos';
+  private urlEndPoint: string = 'https://spring-boot-mitiendita.herokuapp.com/api/productos'; //'https://localhost:8080/api/productos';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -31,5 +31,17 @@ export class ProductoService {
 
   delete(id: number): Observable<Producto>{
     return this.http.delete<Producto>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+  }
+
+  subirArchivo(archivo: File, id): Observable<HttpEvent<{}>>{
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+
+    const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`, formData,{
+      reportProgress: true
+    });
+
+    return this.http.request(req);
   }
 }

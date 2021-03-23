@@ -16,12 +16,6 @@
         <label for="inputDescripcion">Descripción</label>
         <input type="text" class="form-control" id="inputDescripcion" name="descripcion" placeholder="Descripción del producto" [(ngModel)]="producto.descripcion">
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputImagen">Imagen</label>
-        			<input type="file" name="file">
-        </div>
-      </div>
       <div class="form-group row">
         <div class="col-sm-6">
           <button class="btn btn-primary" role="button" name="button" (click) = 'create()' *ngIf="!producto.id else elseBlock">Agregar</button>

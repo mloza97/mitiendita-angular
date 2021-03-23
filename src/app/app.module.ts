@@ -14,6 +14,7 @@ import { FormComponent } from './agregar-producto/form.component';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { ProductoService } from './agregar-producto/producto.service';
+import { DetalleComponent } from './agregar-producto/detalle/detalle.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/productos', pathMatch: 'full' },
@@ -34,7 +35,8 @@ const routes: Routes = [
     LoginComponent,
     UltimasComprasComponent,
     AgregarProductoComponent,
-    FormComponent
+    FormComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
