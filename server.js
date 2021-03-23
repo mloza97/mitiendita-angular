@@ -6,7 +6,7 @@ app.use(express.static(__dirname + '/dist'));
 
 //PathLocationStrategy
 app.get('/*', (req, res) =>
-  res.sendFile('index.html', {root: 'dist/mitiendita-app'}),
+  res.sendFile('index.html', {root: 'dist/'}),
 );
 
 app.listen(process.env.PORT || 8080);
