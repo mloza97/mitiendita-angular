@@ -119,9 +119,18 @@
               "devServerTarget": "mitiendita-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
+<<<<<<< HEAD
   "defaultProject": "mitiendita-app"
 }
+=======
+  "defaultProject": "Mitiendita-app"
+}
+>>>>>>> gh-pages

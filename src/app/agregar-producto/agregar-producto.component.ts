@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ModalService } from './detalle/modal.service';
 import { Producto } from './producto';
 import { ProductoService } from './producto.service';
 
@@ -10,13 +11,24 @@ import { ProductoService } from './producto.service';
 export class AgregarProductoComponent implements OnInit {
 
   productos: Producto[];
-  constructor(private productoService: ProductoService) { }
+  productoSeleccionado: Producto;
+
+  constructor(private productoService: ProductoService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     //Subscripcion al Observable
     this.productoService.getProductos().subscribe(
       (productos) => this.productos = productos
     );
+
+    this.modalService.notificarUpload.subscribe(producto => {
+      this.productos = this.productos.map(productoOriginal => {
+        if(producto.id == productoOriginal.id){
+          productoOriginal.foto = producto.foto;
+        }
+        return productoOriginal;
+      })
+    })
   }
 
   delete(producto: Producto): void{
@@ -63,4 +75,8 @@ export class AgregarProductoComponent implements OnInit {
     })
   }
 
+  abrirModal(producto: Producto){
+      this.productoSeleccionado = producto;
+      this.modalService.abrirModal();
+    }
 }
