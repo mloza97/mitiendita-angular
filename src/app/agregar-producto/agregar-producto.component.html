@@ -33,7 +33,7 @@
           </td>
           <td>{{ producto.nombre }}</td>
           <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.precio }}</td>
+          <td>{{ producto.precio | currency: 'USD' | lowercase}}</td>
           <td>
             <button type="button" name="editar" [routerLink]= "['/agregarProd/form', producto.id]" class="btn btn-primary btn-sm">Editar</button>
           </td>

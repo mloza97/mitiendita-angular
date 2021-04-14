@@ -1,26 +1,18 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="card">
-    <img src="../assets/img/coca.jpg" class="card-img-top" alt="...">
+<div *ngIf="productos?.length == 0" class="alert alert-info">
+  No hay productos que mostrar!
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="productos?.length>0">
+  <div class="card" *ngFor="let producto of productos">
+    <img *ngIf="producto?.foto"
+      src="https://spring-boot-mitiendita.herokuapp.com/api/uploads/archivo/{{producto.foto}}"
+      alt="{{producto.foto}}" class="card-img-top">
+    <img *ngIf="!producto?.foto"
+      src="https://spring-boot-mitiendita.herokuapp.com/img/fruta.png"
+        alt="{{producto.foto}}" class="card-img-top">
     <div class="card-body">
-      <h5 class="card-title">Coca-Cola</h5>
-      <p class="card-text">$35.00</p>
-      <p class="card-text"><small class="text-muted">2 litros</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="../assets/img/coca.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Coca-Cola</h5>
-      <p class="card-text">$35.00</p>
-      <p class="card-text"><small class="text-muted">2 litros</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="../assets/img/coca.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Coca-Cola</h5>
-      <p class="card-text">$35.00</p>
-      <p class="card-text"><small class="text-muted">2 litros</small></p>
+      <h5 class="card-title">{{ producto.nombre }}</h5>
+      <p class="card-text">{{ producto.precio | currency: 'USD' | lowercase }}</p>
+      <p class="card-text"><small class="text-muted">{{ producto.descripcion }}</small></p>
     </div>
   </div>
 </div>
