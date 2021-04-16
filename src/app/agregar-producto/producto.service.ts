@@ -17,7 +17,7 @@ export class ProductoService {
     return this.http.get<Producto[]>(this.urlEndPoint);
   }
 
-  getProducto(id): Observable<Producto>{
+  getProducto(id: any): Observable<Producto>{
     return this.http.get<Producto>(`${this.urlEndPoint}/${id}`)
   }
 
@@ -33,7 +33,7 @@ export class ProductoService {
     return this.http.delete<Producto>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
   }
 
-  subirArchivo(archivo: File, id): Observable<HttpEvent<{}>>{
+  subirArchivo(archivo: File, id: any): Observable<HttpEvent<{}>>{
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
